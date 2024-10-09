@@ -1,6 +1,6 @@
 import { useRef, useState } from "react";
 import UserProfilePicture from "../components/UserProfilePicture";
-import ProfileNav from "../features/profile/profileNav";
+import ProfileNav from "../features/profile/ProfileNav";
 import UserCoverPicture from "../features/profile/UserCoverPicture";
 import EditProfileModal from "../features/profile/EditProfileModal";
 import UserInfo from "../features/profile/UserInfo";
