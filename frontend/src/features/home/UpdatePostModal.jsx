@@ -1,4 +1,3 @@
-import { useState } from "react";
 import AddPost from "./AddPost";
 
 function UpdatePostModal({ updateBtn, postText, postImage, postID }) {
@@ -12,8 +11,6 @@ function UpdatePostModal({ updateBtn, postText, postImage, postID }) {
           postImage={postImage}
           updateSession={true}
         />
-        {/* <h3 className="text-lg font-bold">Hello!</h3>
-        <p className="py-4">Press ESC key or click outside to close</p> */}
       </div>
       <form method="dialog" className="modal-backdrop">
         <button>close</button>

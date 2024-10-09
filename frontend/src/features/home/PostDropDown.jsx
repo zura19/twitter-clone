@@ -24,8 +24,6 @@ function PostDropDown({ showDeleteModal, showUpdateModal }) {
         >
           <button>
             <HiOutlinePencilSquare size={20} />
-
-            {/* <HiOutlineTrash size={20} /> */}
           </button>
         </li>
         <li

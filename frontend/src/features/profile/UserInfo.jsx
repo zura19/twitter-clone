@@ -1,12 +1,9 @@
 import { HiOutlineLink } from "react-icons/hi";
 import { HiOutlineCalendarDays } from "react-icons/hi2";
-import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import getMonthAndYear from "./getDate";
 
 function UserInfo({ activeUser }) {
-  // const user = useSelector((store) => store?.user?.user?.data?.user || null);
-
   return (
     <div className="mt-10 space-y-1 px-6 font-bold">
       <span className="text-lg capitalize">{activeUser?.fullName}</span>

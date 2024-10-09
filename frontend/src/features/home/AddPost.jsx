@@ -1,8 +1,4 @@
-import {
-  HiOutlineEmojiHappy,
-  HiOutlinePhotograph,
-  HiQuestionMarkCircle,
-} from "react-icons/hi";
+import { HiOutlineEmojiHappy, HiOutlinePhotograph } from "react-icons/hi";
 import { useSelector } from "react-redux";
 import UserProfilePicture from "../../components/UserProfilePicture";
 import { useState } from "react";
@@ -44,13 +40,10 @@ function AddPost({ updateSession, postText, postImage, postID }) {
     },
   });
 
-  // console.log(text);
-
   return (
     <div className="grid grid-cols-[auto_1fr] gap-2 border-b border-gray-700 px-6 py-4">
       <UserProfilePicture src={user?.profileImg} alt={user?.userName} />
 
-      {/* <div className="h-8 w-8 rounded-full bg-white"></div> */}
       <div>
         <textarea
           type="text"

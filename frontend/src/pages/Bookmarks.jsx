@@ -1,10 +1,9 @@
 import { useQuery } from "@tanstack/react-query";
 import BookmarksNav from "../features/bookmarks/BookmarksNav";
-import Nav from "../features/home/Nav";
 import { getBookmarks } from "../features/bookmarks/getBookmarks";
 import { useSelector } from "react-redux";
 import Post from "../features/home/Post";
-import Loader from "../components/Loader";
+
 import { HiOutlineBookmark } from "react-icons/hi2";
 
 function Bookmarks() {

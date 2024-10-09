@@ -7,10 +7,6 @@ function EditProfileModal({
   editCoverPic,
   reset,
 }) {
-  // const modal = useRef(null);
-
-  // modal.current.showModal();
-
   return (
     <dialog id="my_modal_2" ref={modal} className="modal">
       <div className="modal-box rounded-md">

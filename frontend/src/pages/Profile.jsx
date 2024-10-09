@@ -1,19 +1,18 @@
-import { useEffect, useRef, useState } from "react";
+import { useRef, useState } from "react";
 import UserProfilePicture from "../components/UserProfilePicture";
 import ProfileNav from "../features/profile/profileNav";
 import UserCoverPicture from "../features/profile/UserCoverPicture";
 import EditProfileModal from "../features/profile/EditProfileModal";
-import UserInfo from "../features/profile/userInfo";
-import { useDispatch, useSelector } from "react-redux";
+import UserInfo from "../features/profile/UserInfo";
+import { useSelector } from "react-redux";
 import PostsAndLikes from "../features/profile/PostsAndLikes";
 import Post from "../features/home/Post";
 import { HiOutlinePencil } from "react-icons/hi";
 import PictureButton from "../features/profile/PictureButton";
 import { useLocation, useParams } from "react-router-dom";
 import UserLikes from "../features/profile/UserLikes";
-import { removeActiveUser, setActiveUser } from "../slices/userSlice";
 import ProfileSkeleton from "../features/profile/ProfileSkeleton";
-import { useQuery, useQueryClient } from "@tanstack/react-query";
+import { useQuery } from "@tanstack/react-query";
 import useGetProfile from "../hooks/useGetProfile";
 import { getUserPosts } from "../features/profile/getUserPosts";
 import ProfileError from "../features/profile/ProfileError";
@@ -23,7 +22,6 @@ function Profile() {
   const modal = useRef(null);
   const user = useSelector((store) => store?.user?.user?.data?.user);
   const token = useSelector((store) => store?.user?.user?.token);
-  const dispatch = useDispatch();
   const activeUser = useSelector((store) => store?.user?.activeUser || null);
   const [editUser, setEditUser] = useState(false);
   const [editProfilePic, setEditProfilePic] = useState(false);
@@ -31,19 +29,13 @@ function Profile() {
   const { username } = useParams();
   const location = useLocation();
   const { getUser } = useGetProfile();
-  const queryClient = useQueryClient();
 
   const { isLoading, error } = useQuery({
     queryFn: () => getUser(username),
     queryKey: ["getProfile", user, location, username, activeUser],
   });
 
-  const {
-    data: activeUserPosts,
-    isLoading: isLoadingPosts,
-    isFetching: isFetchingPosts,
-    error: postsError,
-  } = useQuery({
+  const { data: activeUserPosts, isLoading: isLoadingPosts } = useQuery({
     queryFn: () => getUserPosts(token, activeUser?._id),
     queryKey: ["userPosts", activeUser],
     enabled: Boolean(activeUser?._id) === true,

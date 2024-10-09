@@ -1,6 +1,5 @@
-import { HiOutlineMail } from "react-icons/hi";
-import { HiOutlineKey, HiOutlinePencil, HiOutlineUser } from "react-icons/hi2";
-import { Link, useNavigate } from "react-router-dom";
+import { HiOutlineKey, HiOutlineUser } from "react-icons/hi2";
+import { Link } from "react-router-dom";
 import XSvg from "../components/X";
 import { useState } from "react";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
@@ -11,7 +10,7 @@ function Login() {
   const [userName, setUserName] = useState("");
   const [password, setPassowrd] = useState("");
   const { login } = useLogin();
-  const navigate = useNavigate();
+
   const queryClient = useQueryClient();
 
   const { mutate, isLoading, error } = useMutation({

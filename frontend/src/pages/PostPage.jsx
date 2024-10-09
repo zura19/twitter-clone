@@ -12,11 +12,7 @@ function PostPage() {
   const token = useSelector((store) => store?.user?.user?.token);
   const user = useSelector((store) => store?.user?.user?.data?.user);
 
-  const {
-    data: post,
-    isLoading,
-    error,
-  } = useQuery({
+  const { data: post, isLoading } = useQuery({
     queryFn: () => getPost(token, id),
     queryKey: ["onePost", id],
   });

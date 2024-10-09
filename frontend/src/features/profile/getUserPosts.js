@@ -36,5 +36,3 @@ export const getUserLikedPosts = async (token, id) => {
     throw err;
   }
 };
-
-// /api/post/likedByUser/

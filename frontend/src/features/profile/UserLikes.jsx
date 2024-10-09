@@ -2,7 +2,6 @@ import { useQuery } from "@tanstack/react-query";
 import { HiOutlineLockClosed } from "react-icons/hi";
 import { getUserLikedPosts } from "./getUserPosts";
 import { useSelector } from "react-redux";
-import Loader from "./../../components/Loader";
 import Post from "../home/Post";
 
 function UserLikes({ user, username, activeUser }) {
