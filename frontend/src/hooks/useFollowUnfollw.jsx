@@ -2,7 +2,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { setUser } from "../slices/userSlice";
 function useFollowUnfollow() {
   const token = useSelector((store) => store?.user?.user?.token);
-  const user = useSelector((store) => store?.user?.user);
 
   const dispatch = useDispatch();
 

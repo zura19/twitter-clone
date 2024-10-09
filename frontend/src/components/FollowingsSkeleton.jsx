@@ -1,6 +1,3 @@
-import FollowUnfollowBtn from "../features/profile/FollowUnfollowBtn";
-import UserProfilePicture from "./UserProfilePicture";
-
 function FollowingsSkeleton() {
   return (
     <>

@@ -4,7 +4,6 @@ import Nav from "../features/home/Nav";
 import Post from "../features/home/Post";
 import { useSelector } from "react-redux";
 import Loader from "../components/Loader";
-import { getAuhtors } from "../features/home/homeApi";
 
 function HomePage() {
   const token = useSelector((store) => store?.user?.user?.token);
@@ -21,12 +20,6 @@ function HomePage() {
     },
     queryKey: ["post"],
   });
-
-  // const { data: user, isLoading: skeletonTime } = useQuery({
-  //   queryFn: () => getAuhtors(token, post?.user),
-  //   queryKey: ["postAuthor", post],
-  //   // enabled: Boolean(post) !== false,
-  // });
 
   return (
     <>

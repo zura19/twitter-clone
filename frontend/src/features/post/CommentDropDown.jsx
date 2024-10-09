@@ -9,7 +9,7 @@ import toast from "react-hot-toast";
 
 function CommentDropDown({ modelOpen, token, postID, commentID }) {
   const queryClient = useQueryClient();
-  const { mutate: deleteCommentMutation, isLoading } = useMutation({
+  const { mutate: deleteCommentMutation } = useMutation({
     mutationFn: () => deleteComment(token, postID, commentID),
     onSuccess: (data) => {
       toast.success(data?.message);

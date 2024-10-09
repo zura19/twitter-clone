@@ -1,6 +1,6 @@
 import { useSelector } from "react-redux";
 import UserProfilePicture from "../../components/UserProfilePicture";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useState } from "react";
 import { addComment, updateComment } from "./postApi";

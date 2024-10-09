@@ -1,4 +1,4 @@
-import { useMutation, useQuery } from "@tanstack/react-query";
+import { useQuery } from "@tanstack/react-query";
 import FollowUnfollowBtn from "../features/profile/FollowUnfollowBtn";
 import UserProfilePicture from "./UserProfilePicture";
 import { getAuhtors as getFollowings } from "../features/home/homeApi";

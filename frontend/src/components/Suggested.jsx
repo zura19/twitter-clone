@@ -1,4 +1,4 @@
-import { useMutation, useQuery } from "@tanstack/react-query";
+import { useQuery } from "@tanstack/react-query";
 import SuggestedUser from "./SuggestedUser";
 import useSuggestedUsers from "../hooks/useSuggestedUsers";
 import { useSelector } from "react-redux";
@@ -7,11 +7,10 @@ import SuggestedSkeleton from "./SuggestedSkeleton";
 function Suggested() {
   const { suggestedUsers } = useSuggestedUsers();
   const { filteredUsers } = useSelector((store) => store?.user?.suggestedUsers);
-  const user = useSelector((store) => store?.user?.user);
 
   console.log(filteredUsers);
 
-  const { isLoading, isError, error } = useQuery({
+  const { isLoading } = useQuery({
     queryFn: suggestedUsers,
     queryKey: ["suggestedUsers"],
   });

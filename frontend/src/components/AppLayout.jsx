@@ -1,7 +1,6 @@
 import { Outlet } from "react-router-dom";
 import Sidebar from "./Sidebar";
 import Suggested from "./Suggested";
-import Nav from "../features/home/Nav";
 
 function AppLayout() {
   return (

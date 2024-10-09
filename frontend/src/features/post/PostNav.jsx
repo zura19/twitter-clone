@@ -12,9 +12,7 @@ function PostNav({ userName }) {
       </Link>
       <div>
         <h2 className="text-base font-bold">Post</h2>
-        {/* <h2 className="text-xs">@{userName}</h2> */}
       </div>
-      {/* <NotoficationDropDown /> */}
     </div>
   );
 }

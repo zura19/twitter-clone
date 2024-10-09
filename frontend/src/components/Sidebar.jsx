@@ -1,18 +1,12 @@
-import {
-  HiOutlineBell,
-  HiOutlineHome,
-  HiOutlineLogout,
-  HiOutlineUser,
-} from "react-icons/hi";
+import { HiOutlineBell, HiOutlineHome, HiOutlineUser } from "react-icons/hi";
 import XSvg from "./X";
 import { NavLink, useNavigate } from "react-router-dom";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import useLogout from "../hooks/useLogout";
 import toast from "react-hot-toast";
 import { useSelector } from "react-redux";
-import UserProfilePicture from "./UserProfilePicture";
 import SidebarUser from "./SidebarUser";
-import { HiBookmark, HiOutlineBookmark } from "react-icons/hi2";
+import { HiOutlineBookmark } from "react-icons/hi2";
 
 function Sidebar() {
   const { logout } = useLogout();
