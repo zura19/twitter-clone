@@ -1,6 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
-import Notification from "../features/notifications/Notification";
 import NotificationsNav from "../features/notifications/NotificationsNav";
+import Notification from "../features/notifications/Notification";
 import { getUserNotifications } from "../features/notifications/notificationsApi";
 import { useSelector } from "react-redux";
 import { HiOutlineBell } from "react-icons/hi";
