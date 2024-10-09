@@ -1,0 +1,28 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.sidebar-navlink a .active {
+  background-color: green;
+}
+
+@media (prefers-reduced-motion) {
+  .skeleton {
+    animation-duration: 1s;
+  }
+}
+
+.btn-appear {
+  display: none;
+  animation: appeare 0.5s;
+}
+
+@keyframes appear {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
