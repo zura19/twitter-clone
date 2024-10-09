@@ -12,7 +12,7 @@ function Bookmarks() {
 
   const { data: bookmarks, isLoading } = useQuery({
     queryFn: () => getBookmarks(token, user._id),
-    queryKey: ["bookmarks"],
+    queryKey: ["bookmarks", user],
   });
 
   return (

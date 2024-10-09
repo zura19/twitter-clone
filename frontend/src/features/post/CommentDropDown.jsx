@@ -9,7 +9,7 @@ import toast from "react-hot-toast";
 
 function CommentDropDown({ modelOpen, token, postID, commentID }) {
   const queryClient = useQueryClient();
-  const { mutate: deleteCommentMutation } = useMutation({
+  const { mutate: deleteCommentMutation, isLoading: isDeleting } = useMutation({
     mutationFn: () => deleteComment(token, postID, commentID),
     onSuccess: (data) => {
       toast.success(data?.message);
@@ -45,9 +45,13 @@ function CommentDropDown({ modelOpen, token, postID, commentID }) {
           onClick={deleteCommentMutation}
           className="flex items-center justify-center rounded-md p-1 transition-all duration-300 hover:bg-gray-800"
         >
-          <button>
-            <HiOutlineTrash size={17} />
-          </button>
+          {isDeleting ? (
+            <span className="loading loading-spinner loading-xs text-white"></span>
+          ) : (
+            <button>
+              <HiOutlineTrash size={17} />
+            </button>
+          )}
         </li>
       </ul>
     </div>

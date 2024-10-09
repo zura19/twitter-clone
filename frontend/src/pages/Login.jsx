@@ -9,6 +9,7 @@ import toast from "react-hot-toast";
 function Login() {
   const [userName, setUserName] = useState("");
   const [password, setPassowrd] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
   const { login } = useLogin();
 
   const queryClient = useQueryClient();
@@ -17,8 +18,7 @@ function Login() {
     mutationFn: () => login({ userName, password }),
     onSuccess: () => {
       toast.success("User logged in successfully");
-      queryClient.invalidateQueries({ queryKey: ["authUser"] });
-      // navigate("/");
+      queryClient.invalidateQueries();
     },
     onError: (err) => {
       toast.error(err.message);
@@ -54,12 +54,18 @@ function Login() {
         <label className="input input-bordered flex items-center gap-2 rounded-md">
           <HiOutlineKey />
           <input
-            type="password"
+            type={showPassword ? "text" : "password"}
             className="grow"
-            placeholder="Password"
+            placeholder={"Password"}
             value={password}
             onChange={(e) => setPassowrd(e.target.value)}
           />
+          <p
+            onClick={() => setShowPassword((show) => !show)}
+            className="cursor-pointer text-sm"
+          >
+            {showPassword ? "Hide" : "Show"}
+          </p>
         </label>
 
         <button
@@ -67,7 +73,7 @@ function Login() {
           className="btn btn-primary rounded-full text-white"
         >
           {isLoading ? (
-            <span className="loading loading-spinner loading-sm"></span>
+            <span className="loading loading-spinner loading-sm text-white"></span>
           ) : (
             "Log in"
           )}

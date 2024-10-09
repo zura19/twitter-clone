@@ -12,6 +12,7 @@ function Signup() {
   const [email, setEmail] = useState("");
   const [userName, setUserName] = useState("");
   const [password, setPassowrd] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
 
   const { signup } = useSignup();
 
@@ -74,12 +75,18 @@ function Signup() {
         <label className="input input-bordered flex items-center gap-2 rounded-md">
           <HiOutlineKey />
           <input
-            type="password"
+            type={showPassword ? "text" : "password"}
             className="grow"
             placeholder="Password"
             value={password}
             onChange={(e) => setPassowrd(e.target.value)}
           />
+          <p
+            onClick={() => setShowPassword((show) => !show)}
+            className="cursor-pointer text-sm"
+          >
+            {showPassword ? "Hide" : "Show"}
+          </p>
         </label>
 
         <button
@@ -87,7 +94,7 @@ function Signup() {
           className="btn btn-primary rounded-full text-white"
         >
           {isLoading ? (
-            <span className="loading loading-spinner loading-sm"></span>
+            <span className="loading loading-spinner loading-sm text-white"></span>
           ) : (
             "Sign Up"
           )}

@@ -23,6 +23,7 @@ function BookmarkBtn({ token, postID, bookmarksArr, userID }) {
         className="rounded-md p-1 transition-all duration-300 hover:bg-gray-900 hover:text-white"
       >
         <HiOutlineBookmark
+          className={`${isLoading && "btn-animation"}`}
           color="#d1d5db"
           fill={bookmarksArr.includes(userID) ? "white" : ""}
           size={20}

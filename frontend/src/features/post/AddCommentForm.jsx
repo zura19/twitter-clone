@@ -69,7 +69,7 @@ function AddCommentForm({ postID, editingSession, comment, commentID }) {
           className="btn btn-outline btn-sm rounded-full border-gray-500 px-8 py-0"
         >
           {isLoading ? (
-            <span className="loading loading-spinner loading-sm"></span>
+            <span className="loading loading-spinner loading-sm text-white"></span>
           ) : (
             "Add"
           )}

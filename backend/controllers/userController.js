@@ -1,3 +1,4 @@
+import Notification from "../models/notificationModel.js";
 import User from "../models/userModel.js";
 
 export const getSuggestedUsers = async (req, res) => {
@@ -146,6 +147,11 @@ export const followUnfollowUser = async (req, res) => {
       );
       const user = await User.find({ _id: currentUser._id });
 
+      const notification = await Notification.create({
+        from: currentUser._id,
+        to: id,
+        type: "follow",
+      });
       res.status(201).json({
         message: "User followed Successfully",
         data: { user: user[0] },

@@ -12,7 +12,7 @@ function FollowUnfollowBtn({
   const queryClient = useQueryClient();
   const { followUnfollow } = useFollowUnfollow();
 
-  const { mutate: followOrUnfollow } = useMutation({
+  const { mutate: followOrUnfollow, isLoading } = useMutation({
     mutationFn: () => followUnfollow(activeUserID),
     onSuccess: (message) => {
       toast.success(message);
@@ -27,17 +27,25 @@ function FollowUnfollowBtn({
           <button
             ref={fBtn}
             onClick={followOrUnfollow}
-            className="ml-auto rounded-full border border-gray-900 bg-white px-4 py-[5px] text-sm font-semibold text-gray-900 transition-all duration-300 hover:border-gray-700 hover:bg-secondary hover:text-white"
+            className={`ml-auto rounded-full border border-gray-900 bg-white ${isLoading ? "px-7" : ""} px-4 py-[5px] text-sm font-semibold text-gray-900 transition-all duration-300 hover:border-gray-700 hover:bg-secondary hover:text-white`}
           >
-            Follow
+            {isLoading ? (
+              <span className="loading loading-spinner loading-xs text-white"></span>
+            ) : (
+              "Follow"
+            )}
           </button>
         ) : (
           <button
             ref={fBtn}
             onClick={followOrUnfollow}
-            className="ml-auto rounded-full border border-gray-500 bg-secondary px-4 py-[5px] text-sm font-semibold transition-all duration-300 hover:bg-white hover:text-gray-900"
+            className={`ml-auto rounded-full border border-gray-500 bg-secondary ${isLoading ? "px-7" : ""} px-4 py-[5px] text-sm font-semibold transition-all duration-300 hover:bg-white hover:text-gray-900`}
           >
-            Unfollow
+            {isLoading ? (
+              <span className="loading loading-spinner loading-xs text-white"></span>
+            ) : (
+              "UnFollow"
+            )}
           </button>
         )}
       </>
@@ -50,9 +58,13 @@ function FollowUnfollowBtn({
         <button
           ref={fBtn}
           onClick={followOrUnfollow}
-          className="ml-auto rounded-full border border-gray-500 bg-secondary px-4 py-[5px] text-sm font-semibold transition-all duration-300 hover:bg-white hover:text-gray-900"
+          className={`ml-auto rounded-full border border-gray-500 bg-secondary ${isLoading && "px-7"} px-4 py-[5px] text-sm font-semibold transition-all duration-300 hover:bg-white hover:text-gray-900`}
         >
-          Unfollow
+          {isLoading ? (
+            <span className="loading loading-spinner loading-xs text-gray-950"></span>
+          ) : (
+            "Unfollow"
+          )}
         </button>
       </>
     );
@@ -63,16 +75,24 @@ function FollowUnfollowBtn({
       {!following?.includes(activeUserID) ? (
         <button
           onClick={followOrUnfollow}
-          className="btn btn-sm ml-auto mr-6 mt-4 rounded-full border bg-white px-3 capitalize text-gray-900 hover:border-white hover:bg-secondary hover:text-white"
+          className={`btn btn-sm ml-auto mr-6 mt-4 rounded-full border bg-white ${isLoading && "px-7"} px-4 capitalize text-gray-900 transition-all duration-300 hover:border-white hover:bg-secondary hover:text-white`}
         >
-          Follow
+          {isLoading ? (
+            <span className="loading loading-spinner loading-xs text-white"></span>
+          ) : (
+            "Follow"
+          )}
         </button>
       ) : (
         <button
           onClick={followOrUnfollow}
-          className="btn btn-sm ml-auto mr-6 mt-4 rounded-full border border-gray-500 bg-secondary px-3 capitalize hover:bg-white hover:text-gray-900"
+          className={`btn btn-sm ml-auto mr-6 mt-4 rounded-full border border-gray-500 ${isLoading && "px-7"} bg-secondary px-4 capitalize transition-all duration-300 hover:bg-white hover:text-gray-900`}
         >
-          Unfollow
+          {isLoading ? (
+            <span className="loading loading-spinner loading-xs text-gray-950"></span>
+          ) : (
+            "Unfollow"
+          )}
         </button>
       )}
     </>

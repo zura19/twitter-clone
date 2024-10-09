@@ -1,3 +1,4 @@
+import Notification from "../models/notificationModel.js";
 import Post from "./../models/postModel.js";
 
 export const getPosts = async (req, res) => {
@@ -153,6 +154,14 @@ export const likeUnlike = async (req, res) => {
         { new: true }
       );
 
+      if (userId.toString() !== post.user.toString()) {
+        await Notification.create({
+          type: "like",
+          from: userId,
+          to: post.user,
+        });
+      }
+
       res.status(201).json({
         message: "Post Liked Successfully",
       });
@@ -262,6 +271,14 @@ export const addComnent = async (req, res) => {
       $push: { comments: { text, user } },
     });
 
+    if (user.toString() !== post.user.toString()) {
+      await Notification.create({
+        type: "comment",
+        from: user,
+        to: post.user,
+      });
+    }
+
     res.status(201).json({
       message: "Comment added Successfully",
     });
@@ -279,6 +296,12 @@ export const updateComment = async (req, res) => {
     const { text } = req.body;
 
     const post = await Post.findById(postID);
+
+    if (!text) {
+      return res.status(400).json({
+        message: "Type something to add comment!",
+      });
+    }
 
     const commentIndex = post.comments.findIndex(
       (comment) => comment._id.toString() === commentID

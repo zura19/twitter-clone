@@ -6,7 +6,11 @@ import { HiOutlineHeart } from "react-icons/hi";
 function LikeBtn({ token, postID, likesArr, userID }) {
   const queryClient = useQueryClient();
 
-  const { mutate: likeUnlikeMutation, isLoading } = useMutation({
+  const {
+    mutate: likeUnlikeMutation,
+    isLoading,
+    isSuccess,
+  } = useMutation({
     mutationFn: () => likeOrUnlike(token, postID),
     onSuccess: (data) => {
       toast.success(data.message);
@@ -25,9 +29,10 @@ function LikeBtn({ token, postID, likesArr, userID }) {
     >
       <button
         disabled={isLoading}
-        className="rounded-md p-1 transition-all duration-300 hover:bg-gray-900 hover:text-white disabled:cursor-wait"
+        className="rounded-md p-1 transition-all duration-300 hover:bg-gray-900 hover:text-white"
       >
         <HiOutlineHeart
+          className={`${isLoading && "btn-animation"}`}
           fill={likesArr?.includes?.(userID) ? "#ef4444" : ""}
           color={likesArr.includes?.(userID) ? "#ef4444" : "white"}
           size={20}
