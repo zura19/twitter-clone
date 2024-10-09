@@ -1,9 +1,9 @@
 import { useQuery } from "@tanstack/react-query";
 import NotificationsNav from "../features/notifications/NotificationsNav";
-import Notification from "../features/notifications/Notification";
 import { getUserNotifications } from "../features/notifications/notificationsApi";
 import { useSelector } from "react-redux";
 import { HiOutlineBell } from "react-icons/hi";
+import Notif from "../features/notifications/Notif";
 
 function Notifications() {
   const token = useSelector((store) => store?.user?.user?.token);
@@ -38,7 +38,7 @@ function Notifications() {
 
       <ul>
         {notifications?.map((notification) => (
-          <Notification key={notification?._id} notification={notification} />
+          <Notif key={notification?._id} notification={notification} />
         ))}
       </ul>
     </div>

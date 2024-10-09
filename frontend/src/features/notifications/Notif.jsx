@@ -7,9 +7,8 @@ import NotificationSkeleton from "./NotificationSkeleton";
 import { Link } from "react-router-dom";
 import { HiOutlineChatBubbleOvalLeft } from "react-icons/hi2";
 
-function Notification({ notification }) {
+function Notif({ notification }) {
   const token = useSelector((store) => store?.user?.user?.token);
-  // const token = useSelector((store) => store?.user?.user?.token);
 
   const { data: user, isLoading } = useQuery({
     queryFn: () => getAuhtors(token, notification?.from),
@@ -82,4 +81,4 @@ function Notification({ notification }) {
     );
 }
 
-export default Notification;
+export default Notif;
