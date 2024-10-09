@@ -18,7 +18,7 @@ function HomePage() {
       const data = await res.json();
       return data?.post;
     },
-    queryKey: ["post"],
+    queryKey: ["post", _id],
   });
 
   return (

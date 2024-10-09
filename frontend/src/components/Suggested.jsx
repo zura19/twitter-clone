@@ -7,15 +7,18 @@ import SuggestedSkeleton from "./SuggestedSkeleton";
 function Suggested() {
   const { suggestedUsers } = useSuggestedUsers();
   const { filteredUsers } = useSelector((store) => store?.user?.suggestedUsers);
+  const user = useSelector((store) => store?.user?.user?.data?.user);
+
+  console.log(user);
 
   console.log(filteredUsers);
 
-  const { isLoading } = useQuery({
+  const { isLoading, isInitialLoading } = useQuery({
     queryFn: suggestedUsers,
-    queryKey: ["suggestedUsers"],
+    queryKey: ["suggestedUsers", user],
   });
 
-  if (isLoading)
+  if (isInitialLoading || isLoading)
     return (
       <>
         <div className="ml-2 mt-5">
